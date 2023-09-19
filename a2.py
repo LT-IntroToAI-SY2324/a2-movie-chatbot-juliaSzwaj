@@ -27,6 +27,7 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
 
         # you should delete the following line 
 
+
         # 1) if we reached the end of the pattern but not source
         if pind == len(pattern) and sind < len(source):
             return None
@@ -37,8 +38,12 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         #   and come back to this one afterwards
 
         # 3) if we reached the end of the source but not the pattern
+        if pind < len(pattern) and sind == len(source):
+            return None
 
         # 4) if the current thing in the pattern is an _
+        if pattern[pind] == "_":
+            return source[sind]
 
         # 5) if the current thing in the pattern is the same as the current thing in the
         # source
@@ -60,7 +65,7 @@ if __name__ == "__main__":
     assert match(["x", "z", "z"], ["x", "y", "z"]) == None, "test 2 failed"
     assert match(["x", "y"], ["x", "y", "z"]) == None, "test 3 failed"
     assert match(["x", "y", "z", "z"], ["x", "y", "z"]) == None, "test 4 failed"
-    assert match(["x", "_", "z"], ["x", "y", "z"]) == ["y"], "test 5 failed"
+    assert match(["x", "_", "z"], ["x", "y", "z"]) == ["y"], "test 5 failed" #<------
     assert match(["x", "_", "_"], ["x", "y", "z"]) == ["y", "z"], "test 6 failed"
     assert match(["%"], ["x", "y", "z"]) == ["x y z"], "test 7 failed"
     assert match(["x", "%", "z"], ["x", "y", "z"]) == ["y"], "test 8 failed"
