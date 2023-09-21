@@ -36,10 +36,27 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         # WARNING: this condition contains the bulk of the code for the assignment
         # If you get stuck on this one, we encourage you to attempt the other conditions
         #   and come back to this one afterwards
+        #the Java way:
+        #elif pattern[pind] == "%":
+            #accum = ""
+            #while sind != len(source):
+            #    accum += source[sind] + " "
+            #    sind +=1
+            #result.append(accum.strip())
+            #pind += 1
+
         elif pattern[pind] == "%":
-            pattern[pind] += source[sind]
-            while source[sind] <= 3:
-                sind += 1
+            pind += 1
+            if pind == len(pattern):
+                result.append(" ".join(source[sind:]))
+                return result
+            else:
+                current = sind
+                while pattern[pind] != source[sind]:
+                    sind += 1
+                    if sind == len(source):
+                        return None
+                result.append(" ".join(source[current:sind]))
 
         # 3) if we reached the end of the source but not the pattern
         elif pind < len(pattern) and sind == len(source):
