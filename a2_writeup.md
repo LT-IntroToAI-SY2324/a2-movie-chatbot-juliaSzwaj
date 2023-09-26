@@ -12,9 +12,9 @@ This assignment is about learning and applying the while loop and iterating thro
 
 ## Reflection Questions
 1. What was difficult for you while completing the match function?
-
+I think figuring out the right kind of loop (if, while, elif, etc.) was definitely challenging, and also figuring out how/when to loop them was also kind of challenging to me. 
 
 
 2. Explain how you could use the match function for extracting information from a movie database.
-
+You could use the match function by taking a key word (ex: "movie" or "year", etc.) and group the data in the database based on what keyword it matches(make dict(s)?), then print out what the user asks for based on what keywords they use.
 
